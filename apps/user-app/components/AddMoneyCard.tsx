@@ -1,10 +1,10 @@
 "use client";
 import { Button } from "@repo/ui/button";
 import { Card } from "@repo/ui/card";
-import { Center } from "@repo/ui/center";
 import { Select } from "@repo/ui/select";
 import { useState } from "react";
 import { TextInput } from "@repo/ui/textinput";
+import { createOnRampTxn } from "../app/lib/actions/onRampTxns.actions";
 
 const SUPPORTED_BANKS = [
   {
@@ -21,17 +21,22 @@ export const AddMoney = () => {
   const [redirectUrl, setRedirectUrl] = useState(
     SUPPORTED_BANKS[0]?.redirectUrl
   );
+  const [amount, setAmount] = useState(0);
+  const [bank, setBank] = useState(SUPPORTED_BANKS[0]?.name);
   return (
     <Card title="Add Money">
       <div className="w-full">
         <TextInput
           label={"Amount"}
           placeholder={"Amount"}
-          onChange={() => {}}
+          onChange={(amount: string) => {
+            setAmount(Number(amount));
+          }}
         />
         <div className="py-4 text-left">Bank</div>
         <Select
-          onSelect={(value) => {
+          onSelect={(value: string) => {
+            setBank(value);
             setRedirectUrl(
               SUPPORTED_BANKS.find((x) => x.name === value)?.redirectUrl || ""
             );
@@ -43,8 +48,10 @@ export const AddMoney = () => {
         />
         <div className="flex justify-center pt-4">
           <Button
-            onClick={() => {
-              window.location.href = redirectUrl || "";
+            onClick={async () => {
+              const res = await createOnRampTxn(amount * 100, bank);
+              console.log(res);
+              // window.location.href = redirectUrl || "";
             }}
           >
             Add Money

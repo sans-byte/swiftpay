@@ -8,9 +8,9 @@ export function Card({
   children?: React.ReactNode;
 }): JSX.Element {
   return (
-    <div className="border p-4">
+    <div className="border p-4 rounded-lg bg-slate-100 shadow-md">
       <h1 className="text-xl border-b pb-2">{title}</h1>
-      <p>{children}</p>
+      <div>{children}</div>
     </div>
   );
 }

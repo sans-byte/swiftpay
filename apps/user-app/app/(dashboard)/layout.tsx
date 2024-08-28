@@ -7,7 +7,7 @@ export default function Layout({
 }): JSX.Element {
   return (
     <div className="flex">
-      <div className="w-72 border-r border-slate-300 min-h-screen mr-4 pt-28">
+      <div className="w-72 border-r border-slate-300 mr-4 pt-28">
         <div>
           <SidebarItem href={"/dashboard"} icon={<HomeIcon />} title="Home" />
           <SidebarItem
@@ -19,6 +19,11 @@ export default function Layout({
             href={"/transactions"}
             icon={<TransactionsIcon />}
             title="Transactions"
+          />
+          <SidebarItem
+            href={"/p2ptransfer"}
+            icon={<P2PtransferIcon />}
+            title="P2P"
           />
         </div>
       </div>
@@ -46,6 +51,26 @@ function HomeIcon() {
     </svg>
   );
 }
+
+function P2PtransferIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      className="size-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+      />
+    </svg>
+  );
+}
+
 function TransferIcon() {
   return (
     <svg
