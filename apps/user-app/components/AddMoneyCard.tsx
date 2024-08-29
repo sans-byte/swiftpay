@@ -54,7 +54,7 @@ export const AddMoney = () => {
         <div className="flex justify-center pt-4">
           <Button
             onClick={async () => {
-              const res = await createOnRampTxn(amount * 100, bank);
+              const res = await createOnRampTxn(amount * 100, bank!);
               console.log(res);
               // window.location.href = redirectUrl || "";
             }}
