@@ -1,10 +1,9 @@
 "use client";
 import { Button } from "@repo/ui/button";
-import { Card } from "@repo/ui/card";
+import { Card } from "@repo/ui/cardComponent";
 import { TextInput } from "@repo/ui/textinput";
 import { getSession, useSession } from "next-auth/react";
 import { useState } from "react";
-import { authOptions } from "../../lib/auth";
 import { createP2PTransfer } from "../../lib/actions/p2pTxns.actions";
 
 export default function () {
