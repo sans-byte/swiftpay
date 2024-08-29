@@ -25,5 +25,7 @@ jobs:
 
       - run: npm install
 
+      - run: db:generate
+
       - name: Build packages
         run: npm run build --if-present
